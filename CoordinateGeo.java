@@ -8,7 +8,7 @@ import java.util.Scanner ;
 import java.lang.Math; 
 /**
  *
- *
+ * 
  */
 
 
@@ -191,10 +191,33 @@ class Yamuk extends Dortgen{
     void calcArea(){
         double area1 = areaTri(getP0(),getP1(),getP2());    
         double area2 = areaTri(getP0(),getP1(),getP3());
-        if(area1 == area2){
-            area2 = areaTri(getP1(),getP2(),getP3());
+        double area3 = areaTri(getP1(),getP2(),getP3());
+        double a = area1+area2;
+        double b = area2+area3 ; 
+        double c = area1+area3;
+        if(a > b){
+            if(b > c){
+                
+                System.out.println(b);
+                return ;
+            }
+            else{
+                System.out.println(c);
+                return ; 
+            }
         }
-        System.out.println(area1+area2);
+        else if(a < b){
+            if(a > c) {
+                System.out.println(a);
+                return ;
+            } 
+            else {
+                System.out.println(c);
+                return ; 
+            }
+        }
+        
+    
        
     }
     double areaTri(Point p0 , Point p1 , Point p2){
@@ -204,7 +227,7 @@ class Yamuk extends Dortgen{
         a = Math.sqrt(a);        
         b = Math.sqrt(b);
         c = Math.sqrt(c);
-        double u = (a+b+c)/2;
+        double u = (double)(a+b+c)/2;
         double area = u*(u-a)*(u-b)*(u-c);
         area = Math.sqrt(area);
         return area ;
@@ -226,7 +249,7 @@ class ParalelKenar extends Dortgen{
            b = Math.sqrt(b);
            double c = Math.pow(getP1().getX()-getP2().getX(), 2) + Math.pow(getP1().getY()-getP2().getY(),2);
            c = Math.sqrt(c);
-           double u = (a+b+c)/2;
+           double u = (double)(a+b+c)/2;
            //-----------------------------------------------------------------------------------------------
            double area = Math.sqrt(u*(u-a)*(u-b)*(u-c));
            System.out.println(area*2);
