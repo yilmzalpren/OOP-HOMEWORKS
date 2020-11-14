@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pkg1306190030_yilmaz_alperen;
+package CoordinateGeometry;
 import java.util.Scanner ; 
 import java.lang.Math; 
 /**
