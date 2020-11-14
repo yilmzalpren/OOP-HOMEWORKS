@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package CoordinateGeometry;
+package pkg1306190030_yilmaz_alperen;
 import java.util.Scanner ; 
 import java.lang.Math; 
 /**
  *
- * 
+*
  */
 
 
@@ -19,12 +19,13 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
        Point p[] = new Point [4] ; 
        int x , y;
        Scanner fromKeyboard = new Scanner(System.in);
        System.out.println("KARE\nDIKDORTGEN\nYAMUK\nPARALELKENAR");
        System.out.println("Lütfen hangi sekli istiyorsanız onu yazınız ");
-       System.out.println("ORNEK KULLANIM-----> KARE");
+       System.out.println("ORNEK KULLANIM:  KARE");
        String keeper = fromKeyboard.nextLine();
        if(keeper.charAt(0)=='k' || keeper.charAt(0)=='K'){
            for(int i=0 ; i<4 ; ++i){
@@ -68,7 +69,7 @@ public class Main {
            ParalelKenar obj = new ParalelKenar(p[0],p[1],p[2],p[3]);
        }
        else {
-           System.out.println("Invalid inouto");
+           System.out.println("Invalid input");
        }
        
        }
@@ -140,30 +141,45 @@ class Dortgen{
         a = Math.sqrt(a);
         b = Math.sqrt(b);
         c = Math.sqrt(c);
+        double area ; 
         if(a == b){
-            System.out.println(a*b);
+            area = a*b;
+            area = (double) Math.round(area*100)/100;
+            System.out.println(area);
         }
         else if(a ==c){
-            System.out.println(a*c);
+            area = a*c;
+            area = (double) Math.round(area*100)/100;
+            System.out.println(area);
         }
         else if(b ==c){
-            System.out.println(b*c);
+            area = b*c;
+            area = (double) Math.round(area*100)/100;
+            System.out.println(area);
         }
         else{
             if(a > b ){
                 if(a > c){
-                    System.out.println(b*c);
+                    area = b*c;
+                    area = (double) Math.round(area*100)/100;
+                    System.out.println(area);
                 }
                 else { // c > a 
-                    System.out.println(a*b);
+                    area = a*b;
+                    area = (double) Math.round(area*100)/100;
+                    System.out.println(area);
                 }
             }
             else { // b > a 
                if(b > c){
-                   System.out.println(a*c);
+                   area = a*c;
+                   area = (double) Math.round(area*100)/100;
+                   System.out.println(area);
                } 
                else { // c > b
-                   System.out.println(a*b);
+                   area = a*b;
+                   area = (double) Math.round(area*100)/100 ; 
+                   System.out.println(area);
                }
             }
         }
@@ -195,26 +211,36 @@ class Yamuk extends Dortgen{
         double a = area1+area2;
         double b = area2+area3 ; 
         double c = area1+area3;
+//        a = Math.round(a*100)/100;
+//        b = Math.round(b*100)/100;
+//        c = Math.round(c*100)/100;
         if(a > b){
             if(b > c){
-                
+                b = (double) Math.round(b*100)/100;
                 System.out.println(b);
                 return ;
             }
             else{
+                    
+                c = (double) Math.round(c*100)/100;
                 System.out.println(c);
                 return ; 
             }
         }
         else if(a < b){
             if(a > c) {
+                a = (double) Math.round(a*100)/100;
                 System.out.println(a);
                 return ;
             } 
             else {
+                c = (double) Math.round(c*100)/100;
                 System.out.println(c);
                 return ; 
             }
+        }
+        else{
+            System.out.println("Bu bir yamuk degil");
         }
         
     
@@ -252,6 +278,7 @@ class ParalelKenar extends Dortgen{
            double u = (double)(a+b+c)/2;
            //-----------------------------------------------------------------------------------------------
            double area = Math.sqrt(u*(u-a)*(u-b)*(u-c));
+           area = (double) Math.round(area*100)/100;
            System.out.println(area*2);
     }
 }
