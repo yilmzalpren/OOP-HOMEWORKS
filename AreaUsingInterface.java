@@ -8,7 +8,7 @@ import java.util.Scanner ;
 import java.lang.Math; 
 /**
  *
- * @author YILMAZ
+ * 
  */
 
 
@@ -26,7 +26,7 @@ public class AreaUsingInterface {
        Scanner fromKeyboard = new Scanner(System.in);
        System.out.println("KARE\nDIKDORTGEN\nYAMUK\nPARALELKENAR");
        System.out.println("Lütfen hangi sekli istiyorsanız onu yazınız ");
-       System.out.println("ORNEK KULLANIM-----> KARE");
+       System.out.println("ORNEK KULLANIM  KARE");
        String keeper = fromKeyboard.nextLine();
        if(keeper.charAt(0)=='k' || keeper.charAt(0)=='K'){
            for(int i=0 ; i<4 ; ++i){
@@ -99,7 +99,7 @@ class Point{
     }
 }
 
-interface Dortgen{
+interface Dortgen{    
     void calcArea();
 }
 
@@ -149,30 +149,46 @@ class Dikdortgen implements Dortgen{
         a = Math.sqrt(a);
         b = Math.sqrt(b);
         c = Math.sqrt(c);
+        double area ; 
         if(a == b){
-            System.out.println(a*b);
+            area = a*b;
+            area = (double) Math.round(area*100)/100;
+            
+            System.out.println(area);
         }
         else if(a ==c){
-            System.out.println(a*c);
+            area = a*c;
+            area = (double) Math.round(area*100)/100;
+            System.out.println(area);
         }
         else if(b ==c){
-            System.out.println(b*c);
+            area = b*c;
+            area =(double) Math.round(area*100)/100;
+            System.out.println(area);
         }
         else{
             if(a > b ){
                 if(a > c){
-                    System.out.println(b*c);
+                    area = b*c;
+                    area =(double) Math.round(area*100)/100;
+                    System.out.println(area);
                 }
                 else { // c > a 
-                    System.out.println(a*b);
+                    area = a*b;
+                    area = (double) Math.round(area*100)/100;
+                    System.out.println(area);
                 }
             }
             else { // b > a 
                if(b > c){
-                   System.out.println(a*c);
+                   area = a*c;
+                   area = (double) Math.round(area*100)/100;
+                   System.out.println(area);
                } 
                else { // c > b
-                   System.out.println(a*b);
+                   area = a*b;
+                   area = (double) Math.round(area*100)/100;
+                   System.out.println(area);
                }
             }
         }
@@ -227,30 +243,45 @@ class Kare implements Dortgen{
         a = Math.sqrt(a);
         b = Math.sqrt(b);
         c = Math.sqrt(c);
+        double area ; 
         if(a == b){
-            System.out.println(a*b);
+            area = a*b;
+            area = (double) Math.round(area*100)/100;
+            System.out.println(area);
         }
         else if(a ==c){
-            System.out.println(a*c);
+            area = a*c;
+            area =(double) Math.round(area*100)/100;
+            System.out.println(area);
         }
         else if(b ==c){
-            System.out.println(b*c);
+            area = b*c;
+            area = (double) Math.round(area*100)/100;
+            System.out.println(area);
         }
         else{
             if(a > b ){
                 if(a > c){
-                    System.out.println(b*c);
+                    area = b*c;
+                    area = (double)Math.round(area*100)/100;
+                    System.out.println(area);
                 }
                 else { // c > a 
-                    System.out.println(a*b);
+                    area = a*b;
+                    area = (double) Math.round(area*100)/100;
+                    System.out.println(area);
                 }
             }
             else { // b > a 
                if(b > c){
+                   area = a*c;
+                   area = (double) Math.round(area*100)/100;
                    System.out.println(a*c);
                } 
                else { // c > b
-                   System.out.println(a*b);
+                   area = a*b;
+                   area =(double) Math.round(area*100)/100;
+                   System.out.println(area);
                }
             }
         }
@@ -300,29 +331,39 @@ class Yamuk implements Dortgen{
         double area1 = areaTri(getP0(),getP1(),getP2());    
         double area2 = areaTri(getP0(),getP1(),getP3());
         double area3 = areaTri(getP1(),getP2(),getP3());
+        
         double a = area1+area2;
         double b = area2+area3 ; 
         double c = area1+area3;
+//        a = Math.round(a*100)/100;
+//        b = Math.round(b*100)/100;
+//        c = Math.round(c*100)/100;
         if(a > b){
             if(b > c){
-                
+                b = (double) Math.round(b*100)/100;
                 System.out.println(b);
                 return ;
             }
-            else{
+            else{ // b<=c
+                c = (double) Math.round(c*100)/100;
                 System.out.println(c);
                 return ; 
             }
         }
         else if(a < b){
             if(a > c) {
+                a = (double) Math.round(a*100)/100;
                 System.out.println(a);
                 return ;
             } 
-            else {
+            else { // a <= c 
+                c = (double) Math.round(c*100)/100;
                 System.out.println(c);
                 return ; 
             }
+        }
+        else{
+            System.out.println("Bu bir yamuk degildir");
         }
         
     
@@ -337,9 +378,11 @@ class Yamuk implements Dortgen{
         a = Math.sqrt(a);        
         b = Math.sqrt(b);
         c = Math.sqrt(c);
+
         double u = (double)(a+b+c)/2;
         double area = u*(u-a)*(u-b)*(u-c);
         area = Math.sqrt(area);
+
         return area ;
         
     }
@@ -394,9 +437,12 @@ class ParalelKenar implements Dortgen{
            b = Math.sqrt(b);
            double c = Math.pow(getP1().getX()-getP2().getX(), 2) + Math.pow(getP1().getY()-getP2().getY(),2);
            c = Math.sqrt(c);
+
            double u = (double)(a+b+c)/2;
            //-----------------------------------------------------------------------------------------------
            double area = Math.sqrt(u*(u-a)*(u-b)*(u-c));
+           area = Math.round(a*100)/100;
+
            System.out.println(area*2);
     }
-}
+} 
